@@ -16,7 +16,9 @@
         var canvas = document.getElementById('dynamic');
         var ctx = canvas.getContext('2d');
             ctx.beginPath();
-            ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+            ctx.arc(75,75,50,0,Math.PI*2,true); 
+            ctx.moveTo(205,75)// 绘制
+            ctx.arc(190,75,15,0,Math.PI*2,false); 
             ctx.stroke();
     </script>
 </body>
