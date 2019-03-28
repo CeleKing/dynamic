@@ -16,9 +16,15 @@
         var canvas = document.getElementById('dynamic');
         var ctx = canvas.getContext('2d');
             ctx.beginPath();
-            ctx.arc(75,75,50,0,Math.PI*2,true); 
-            ctx.moveTo(205,75)// 绘制
-            ctx.arc(190,75,15,0,Math.PI*2,false); 
+            ctx.arc(75,175,15,0,Math.PI*2,true); 
+            ctx.moveTo(190,75)
+            ctx.arc(175,75,15,0,Math.PI*2,true); 
+            ctx.moveTo(225,175)
+            ctx.arc(175,175,50,0,Math.PI*2,true); 
+            ctx.moveTo(290,175)// 绘制
+            ctx.arc(275,175,15,0,Math.PI*2,true);
+            ctx.moveTo(195,275) 
+            ctx.arc(180,275,15,0,Math.PI*2,false);
             ctx.stroke();
     </script>
 </body>
