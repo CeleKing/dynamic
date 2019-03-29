@@ -12,6 +12,7 @@
     <canvas id="dynamic" width="960" height="600">
         <p>你的浏览器不支持Canvas</p>
     </canvas>
+    <div id="dynamic-bubble"></div>
     <script type="text/javascript">
         var canvas = document.getElementById('dynamic');
         var ctx = canvas.getContext('2d');
@@ -26,6 +27,26 @@
             ctx.moveTo(195,275) 
             ctx.arc(180,275,15,0,Math.PI*2,false);
             ctx.stroke();
+        var svgContainer = d3.select("#dynamic-bubble").style("width", "960px").style("height", "600px")
+        var svg = d3.select("#dynamic-bubble").append("svg")
+            .attr("class", "bubbleSvg")
+        // get JSON data
+        d3.json("data.json", function(error, data) {
+            var root = data.root;
+            // get origin bubble
+            var colVals = d3.scale.category10();
+            var bubble = svg.selectAll(".origin")
+                .data(root)
+                .enter().append("g")
+            bubble.append("circle")
+                .attr("class", "origin")
+                .attr("id", function(d, i) {return "origin" + d.id})
+                .attr("r", 50)
+                .attr("cx", 100)
+                .attr("cy", 90)
+                .style("fill", function(d, i) {return colVals(i) })
+                .style("opacity", 0.3)
+        })
     </script>
 </body>
 </html>
