@@ -33,6 +33,7 @@
         // get JSON data
         d3.json("data.json", function(error, data) {
             var root = data.root;
+            var nodeCount = root[0].node.length;
             // get origin bubble
             var colVals = d3.scale.category10();
             var bubble = svg.selectAll(".origin")
@@ -46,6 +47,15 @@
                 .attr("cy", 90)
                 .style("fill", function(d, i) {return colVals(i) })
                 .style("opacity", 0.3)
+            
+                var nodeBubbles = svg.selectAll(".node")
+                    .data(root[0].node)
+                    .enter()
+                    .append("g")
+                nodeBubbles.append("circle")
+                    .attr("class", "node")
+                    .attr("r", 15)
+                    .style("fill", function(d, i) {return colVals(i) })
         })
     </script>
 </body>
